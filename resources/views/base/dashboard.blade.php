@@ -10,6 +10,7 @@
                     <p class="card-text">Descrição aqui</p>
                     <a href="#" class="btn btn-primary">Clique aqui</a>
                 </div>
+                
             </div>
         </div>
         <div class="col-sm-6">
