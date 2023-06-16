@@ -1,15 +1,18 @@
 @extends('base.app')
 
 @section('conteudo')
-@section('tituloPagina', 'Listagem de Usuários')
-<h1>Listagem de Usuários</h1>
-<form action="{{ route('usuario.search') }}" method="post">
+@section('tituloPagina', 'Listagem do Local do Acolhimento')
+<h1>Listagem do Local do Acolhimento</h1>
+<form action="{{ route('localacolhimento.search') }}" method="post">
     @csrf
     <div class="row">
         <div class="col-2">
             <select name="campo" class="form-select">
                 <option value="nome">Nome</option>
+                <option value="latitude">Latitude</option>
+                <option value="longitude">Longitude</option>
                 <option value="telefone">Telefone</option>
+               <option value="endereco">Endereço</option>
             </select>
         </div>
         <div class="col-4">
@@ -19,7 +22,7 @@
             <button class="btn btn-primary" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i> Buscar
             </button>
-            <a class="btn btn-success" href='{{ action('App\Http\Controllers\UsuarioController@create') }}'><i
+            <a class="btn btn-success" href='{{ action('App\Http\Controllers\LocalAcolhimentoController@create') }}'><i
                     class="fa-solid fa-plus"></i> Cadastrar</a>
         </div>
     </div>
@@ -29,30 +32,31 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
+            <th scope="col">Latitude</th>
+            <th scope="col">Longitude</th>
             <th scope="col">Telefone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Categoria</th>
+            <th scope="col">Endereço</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($usuarios as $item)
-            @php
+       <!-- foreach ($locaisacolhimento as $item)
+            php
                 $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
-            @endphp
+            endphp-->
             <tr>
                 <td scope='row'>{{ $item->id }}</td>
                 <td>{{ $item->nome }}</td>
+                <td>{{ $item->latitude }}</td>
+                <td>{{ $item->longitude }}</td>
                 <td>{{ $item->telefone }}</td>
-                <td>{{ $item->email }}</td>
-                <td>{{ $item->categoria->nome }}</td>
-                <td><img src="/storage/{{ $nome_imagem }}" width="100px" class="img-thumbnail" /> </td>
-                <td><a href="{{ action('App\Http\Controllers\UsuarioController@edit', $item->id) }}"><i
+                <td>{{ $item->endereco }}</td>
+                <td><a href="{{ action('App\Http\Controllers\LocalAcolhimentoController@edit', $item->id) }}"><i
                             class='fa-solid fa-pen-to-square' style='color:orange;'></i></a></td>
                 <td>
                     <form method="POST"
-                        action="{{ action('App\Http\Controllers\UsuarioController@destroy', $item->id) }}">
+                        action="{{ action('App\Http\Controllers\LocalAcolhimentoController@destroy', $item->id) }}">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
                         <button type="submit" onclick='return confirm("Deseja Excluir?")' style='all: unset;'><i
