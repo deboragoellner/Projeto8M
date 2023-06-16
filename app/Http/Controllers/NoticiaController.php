@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Noticia;
-use App\Models\Categoria;
 use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
@@ -19,9 +18,7 @@ class NoticiaController extends Controller
 
     function create()
     {
-        $categorias = Categoria::orderBy('nome')->get();
-        //dd($categorias);
-        return view('NoticiaForm')->with(['categorias' => $categorias]);
+        return view('NoticiaForm');
     }
 
     function store(Request $request)
@@ -33,10 +30,9 @@ class NoticiaController extends Controller
 
         //adiciono os dados do formulário ao vetor
         $dados = [
-            'nome' => $request->nome,
-            'telefone' => $request->telefone,
-            'email' => $request->email,
-            'categoria_id' => $request->categoria_id,
+            'titulo' => $request->titulo,
+            'conteudo' => $request->conteudo,
+            'informacoes' => $request->informacoes,
         ];
 
         $imagem = $request->file('imagem');
@@ -63,25 +59,21 @@ class NoticiaController extends Controller
     {
         //select * from Noticia where id = $id;
         $Noticia = Noticia::findOrFail($id);
-        //dd($Noticia);
-        $categorias = Categoria::orderBy('nome')->get();
+        //dd($noticia);
 
         return view('NoticiaForm')->with([
-            'Noticia' => $Noticia,
-            'categorias' => $categorias,
+            'noticia' => $noticia,
         ]);
     }
 
     function show($id)
     {
         //select * from Noticia where id = $id;
-        $Noticia = Noticia::findOrFail($id);
-        //dd($Noticia);
-        $categorias = Categoria::orderBy('nome')->get();
+        $noticia = Noticia::findOrFail($id);
+        //dd($noticia);
 
         return view('NoticiaForm')->with([
-            'Noticia' => $Noticia,
-            'categorias' => $categorias,
+            'noticia' => $noticia,
         ]);
     }
 
@@ -95,10 +87,9 @@ class NoticiaController extends Controller
 
         //adiciono os dados do formulário ao vetor
         $dados =  [
-            'nome' => $request->nome,
-            'telefone' => $request->telefone,
-            'email' => $request->email,
-            'categoria_id' => $request->categoria_id,
+            'titulo' => $request->titulo,
+            'conteudo' => $request->conteudo,
+            'informacoes' => $request->informacoes,
         ];
 
         $imagem = $request->file('imagem');
@@ -124,13 +115,9 @@ class NoticiaController extends Controller
 
     function destroy($id)
     {
-        $Noticia = Noticia::findOrFail($id);
+        $noticia = Noticia::findOrFail($id);
 
-        //verifica se existe o arquivo vinculado ao registro e depois remove
-        if (Storage::disk('public')->exists($Noticia->imagem)) {
-            Storage::disk('public')->delete($Noticia->imagem);
-        }
-        $Noticia->delete();
+        $noticia->delete();
 
         return \redirect('Noticia')->with('success', 'Removido com sucesso!');
     }
@@ -148,7 +135,7 @@ class NoticiaController extends Controller
         }
 
         //dd($noticias);
-        return view('NoticiaList')->with(['Noticias' => $noticias]);
+        return view('NoticiaList')->with(['noticias' => $noticias]);
     }
 }
 

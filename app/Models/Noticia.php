@@ -11,30 +11,26 @@ class Noticia extends Model
     protected $table = "Noticia";
 
     protected $fillable = [
-        'nome', 'telefone', 'email','categoria_id', 'imagem'
+        'titulo', 'imagem', 'telefone', 'conteudo','informacoes'
     ];
-
-    public function categoria(){
-        return $this->belongsTo(Categoria::class,'categoria_id','id');
-    }
 
     public static function rules(){
         return  [
-            'nome' => 'required | max: 120',
-            'telefone' => 'required | max: 20',
-            'email' => ' nullable | email | max: 100',
-            'categoria_id' => ' nullable',
+            'titulo' => 'required | max: 120',
             'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+            'conteudo' => 'required | max: 300',
+            'informacoes' => 'required | max: 300',
         ];
     }
 
     public static function messages(){
         return [
-            'nome.required' => 'O nome é obrigatório',
-            'nome.max' => 'Só é permitido 120 caracteres',
-            'telefone.required' => 'O telefone é obrigatório',
-            'telefone.max' => 'Só é permitido 20 caracteres',
-            'email.max' => 'Só é permitido 100 caracteres',
+            'titulo.required' => 'O nome é obrigatório',
+            'titulo.max' => 'Só é permitido 120 caracteres',
+            'conteudo.required' => 'O conteudo é obrigatório',
+            'conteudo.max' => 'Só é permitido 300 caracteres',
+            'informacoes.required' => 'As informações são obrigatórias',
+            'informacoes.max' => 'Só é permitido 300 caracteres',
         ];
     }
 

@@ -11,20 +11,16 @@ class LocalAcolhimento extends Model
     protected $table = "LocalAcolhimento";
 
     protected $fillable = [
-        'nome', 'telefone', 'email','categoria_id', 'imagem'
+        'nome', 'telefone', 'latitude', 'longitude', 'endereco'
     ];
-
-    public function categoria(){
-        return $this->belongsTo(Categoria::class,'categoria_id','id');
-    }
 
     public static function rules(){
         return  [
             'nome' => 'required | max: 120',
             'telefone' => 'required | max: 20',
-            'email' => ' nullable | email | max: 100',
-            'categoria_id' => ' nullable',
-            'imagem' => ' nullable|image|mimes:jpeg,jpg,png|max:2048',
+            'latitude' => 'required | max: 20',
+            'longitude' => 'required | max: 20',
+            'endereco' => 'required | max: 300',
         ];
     }
 
@@ -34,7 +30,12 @@ class LocalAcolhimento extends Model
             'nome.max' => 'Só é permitido 120 caracteres',
             'telefone.required' => 'O telefone é obrigatório',
             'telefone.max' => 'Só é permitido 20 caracteres',
-            'email.max' => 'Só é permitido 100 caracteres',
+            'latitude.required' => 'A latitude é obrigatória',
+            'latitude.max' => 'Só é permitido 20 caracteres',
+            'longitude.required' => 'A longitude é obrigatória',
+            'longitude.max' => 'Só é permitido 20 caracteres',
+            'endereco.required' => 'O endereco é obrigatório',
+            'endereco.max' => 'Só é permitido 300 caracteres',
         ];
     }
 
