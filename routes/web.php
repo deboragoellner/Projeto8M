@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\LocalAcolhimentoController;
+use App\Http\Controllers\NoticiaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,17 @@ Route::middleware('auth')->group(function () {
     Route::post('usuario/search', [UsuarioController::class, 'search'])->name(
         'usuario.search'
     );
+
+    Route::resource('locaisacolhimento', LocalAcolhimentoController::class);
+    Route::post('locaisacolhimento/search', [LocalAcolhimentoController::class, 'search'])->name(
+        'locaisacolhimento.search'
+    );
+
+    Route::resource('noticias', NoticiaController::class);
+    Route::post('noticias/search', [NoticiaController::class, 'search'])->name(
+        'noticias.search'
+    );
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name(
         'profile.edit'
     );
@@ -42,3 +55,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+?>
