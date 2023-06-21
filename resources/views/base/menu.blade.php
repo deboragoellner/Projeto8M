@@ -11,9 +11,10 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-            <li><a class="active " href="./index.php">Início</a></li>
-          <li><a href="team.html">Indicações</a></li>
-          <li><a href="contact.html">Depoimentos</a></li>
+
+          <li><a class="active " href="./index.php">Início</a></li>
+          <li><a href="{{'noticias'}}">Notícias</a></li>
+          <li><a href="{{'locaisacolhimento'}}">Locais Acolhimento</a></li>
           <li><a href="{{'usuario'}}">Usuario</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

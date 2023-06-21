@@ -52,7 +52,7 @@ class NoticiaController extends Controller
         //passa o vetor com os dados do formulário como parametro para ser salvo
         Noticia::create($dados);
 
-        return \redirect('noticia')->with('success', 'Cadastrado com sucesso!');
+        return \redirect('noticias')->with('success', 'Cadastrado com sucesso!');
     }
 
     function edit($id)
@@ -110,7 +110,7 @@ class NoticiaController extends Controller
             $dados
         );
 
-        return \redirect('Noticia')->with('success', 'Atualizado com sucesso!');
+        return \redirect('noticias')->with('success', 'Atualizado com sucesso!');
     }
 
     function destroy($id)

@@ -3,7 +3,7 @@
 @section('conteudo')
 @section('tituloPagina', 'Listagem de Notícias')
 <h1>Listagem de Notícias</h1>
-<form action="{{ route('noticia.search') }}" method="post">
+<form action="{{ route('noticias.search') }}" method="post">
     @csrf
     <div class="row">
         <div class="col-2">

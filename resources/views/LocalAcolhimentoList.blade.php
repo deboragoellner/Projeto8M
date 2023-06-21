@@ -2,8 +2,60 @@
 
 @section('conteudo')
 @section('tituloPagina', 'Listagem do Local do Acolhimento')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://maps.google.com/maps/api/js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
+
+    <!--
+<x-maps-leaflet leafletVersion='1.9.4'>
+
+
+
+</x-maps-leaflet>
+
+// set the centerpoint of the map:
+<x-maps-leaflet :centerPoint="['lat' => -27.1190, 'long' => 5]"></x-maps-leaflet>
+
+// set a zoomlevel:
+<x-maps-leaflet :zoomLevel="6"></x-maps-leaflet>
+
+// Set markers on the map:
+<x-maps-leaflet : markers="[['lat' => 52.16444513293423, 'long' => 5.985622388024091]]"></x-maps-leaflet>-->
+
+<div id="mymap"></div>
+
+
+<script type="text/javascript">
+
+
+  var locations = <?php print_r(json_encode($locations)) ?>;
+
+
+  var mymap = new GMaps({
+    el: '#mymap',
+    lat: 21.170240,
+    lng: 72.831061,
+    zoom:6
+  });
+
+
+  $.each( locations, function( index, value ){
+      mymap.addMarker({
+        lat: value.lat,
+        lng: value.lng,
+        title: value.city,
+        click: function(e) {
+          alert('This is '+value.city+', gujarat from India.');
+        }
+      });
+ });
+
+
+</script>
+
 <h1>Listagem do Local do Acolhimento</h1>
-<form action="{{ route('localacolhimento.search') }}" method="post">
+<form action="{{ route('locaisacolhimento.search') }}" method="post">
     @csrf
     <div class="row">
         <div class="col-2">
@@ -27,6 +79,7 @@
         </div>
     </div>
 </form>
+
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -41,11 +94,12 @@
         </tr>
     </thead>
     <tbody>
-       <!-- foreach ($locaisacolhimento as $item)
-            php
-                $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
-            endphp-->
-            <tr>
+
+
+
+
+    @foreach ($locaisacolhimento as $item)
+                     <tr>
                 <td scope='row'>{{ $item->id }}</td>
                 <td>{{ $item->nome }}</td>
                 <td>{{ $item->latitude }}</td>

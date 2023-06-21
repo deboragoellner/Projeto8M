@@ -2,10 +2,10 @@
 
 @section('conteudo')
     @php
-        if (!empty($noticia->id)) {
-            $route = route('noticia.update', $noticia->id);
+        if (!empty($noticias->id)) {
+            $route = route('noticias.update', $noticias->id);
         } else {
-            $route = route('noticia.store');
+            $route = route('noticias.store');
         }
     @endphp
 @section('tituloPagina', 'Formulário Notícias')
@@ -15,29 +15,29 @@
     <div class="row">
         <form action='{{ $route }}' method="POST" enctype="multipart/form-data">
             @csrf
-            @if (!empty($noticia->id))
+            @if (!empty($noticias->id))
                 @method('PUT')
             @endif
 
             <input type="hidden" name="id"
-                value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($noticia->id)) {{ $noticia->id }} @else {{ '' }} @endif" /><br>
+                value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($noticias->id)) {{ $noticias->id }} @else {{ '' }} @endif" /><br>
             <div class="col-3">
                 <label class="form-label">Titulo</label><br>
                 <input type="text" class="form-control" name="titulo"
-                    value="@if (!empty(old('titulo'))) {{ old('titulo') }} @elseif(!empty($noticia->titulo)) {{ $noticia->titulo }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('titulo'))) {{ old('titulo') }} @elseif(!empty($noticias->titulo)) {{ $noticias->titulo }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Conteudo</label><br>
                 <input type="text" class="form-control" name="conteudo"
-                    value="@if (!empty(old('conteudo'))) {{ old('conteudo') }} @elseif(!empty($noticia->conteudo)) {{ $noticia->conteudo }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('conteudo'))) {{ old('conteudo') }} @elseif(!empty($noticias->conteudo)) {{ $noticias->conteudo }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Informações</label><br>
                 <input type="text" class="form-control" name="informacoes"
-                    value="@if (!empty(old('informacoes'))) {{ old('informacoes') }} @elseif(!empty($noticia->informacoes)) {{ $noticia->informacoes }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('informacoes'))) {{ old('informacoes') }} @elseif(!empty($noticias->informacoes)) {{ $noticias->informacoes }} @else {{ '' }} @endif" /><br>
             </div>
             @php
-                $nome_imagem = !empty($noticia->imagem) ? $noticia->imagem : 'sem_imagem.png';
+                $nome_imagem = !empty($noticias->imagem) ? $noticias->imagem : 'sem_imagem.png';
             @endphp
             <div class="col-6">
                 <br>
@@ -48,7 +48,7 @@
             <button class="btn btn-success" type="submit">
                 <i class="fa-solid fa-save"></i> Salvar
             </button>
-            <a href='{{ route('noticia.index') }}' class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>
+            <a href='{{ route('noticias.index') }}' class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>
                 Voltar</a> <br><br>
         </form>
     </div>
