@@ -41,7 +41,7 @@ class LocalAcolhimentoController extends Controller
         //passa o vetor com os dados do formulário como parametro para ser salvo
         LocalAcolhimento::create($dados);
 
-        return \redirect('localacolhimento')->with('success', 'Cadastrado com sucesso!');
+        return \redirect('locaisacolhimento')->with('success', 'Cadastrado com sucesso!');
     }
 
     function edit($id)
@@ -89,7 +89,7 @@ class LocalAcolhimentoController extends Controller
             $dados
         );
 
-        return \redirect('localacolhimento')->with('success', 'Atualizado com sucesso!');
+        return \redirect('locaisacolhimento')->with('success', 'Atualizado com sucesso!');
     }
 
     function destroy($id)

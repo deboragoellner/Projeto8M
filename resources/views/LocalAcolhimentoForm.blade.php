@@ -11,6 +11,7 @@
 @section('tituloPagina', 'Formulário Local Acolhimento')
 <h1>Formulário de Local Acolhimento</h1>
 
+
 <div class="col">
     <div class="row">
         <form action='{{ $route }}' method="POST" enctype="multipart/form-data">
@@ -47,13 +48,28 @@
                     value="@if (!empty(old('endereco'))) {{ old('endereco') }} @elseif(!empty($locaisacolhimento->endereco)) {{ $locaisacolhimento->endereco }} @else {{ '' }} @endif" /><br>
 
 
-            <button class="btn btn-success" type="submit">
-                <i class="fa-solid fa-save"></i> Salvar
-            </button>
-            <a href='{{ route('locaisacolhimento.index') }}' class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>
-                Voltar</a> <br><br>
+                <button class="btn btn-success" type="submit">
+                    <i class="fa-solid fa-save"></i> Salvar
+                </button>
+                <a href='{{ route('locaisacolhimento.index') }}' class="btn btn-primary"><i
+                        class="fa-solid fa-arrow-left"></i>
+                    Voltar</a> <br><br>
         </form>
     </div>
+    @if (!empty(old('longitude')) || !empty($locaisacolhimento->longitude))
+        {{ old('longitude') }}
+        <div class="row">
+            <div class="col-6">
+                <label class="form-label">Mapa</label><br>
+                <x-maps-leaflet leafletVersion='1.9.4'
+                 :centerPoint="['lat' => $locaisacolhimento->latitude, 'long' => $locaisacolhimento->longitude]"
+                 :zoomLevel="6"
+                 :markers="[['lat' => $locaisacolhimento->latitude, 'long' => $locaisacolhimento->longitude]]">
+                </x-maps-leaflet>
+
+            </div>
+        </div>
+    @endif
 </div>
 </div>
 @endsection

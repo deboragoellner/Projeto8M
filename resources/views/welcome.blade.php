@@ -68,8 +68,8 @@
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Maria <span>Maria</span></h2>
-          <p class="animate__animated animate__fadeInUp">O projeto MARIA MARIA surgiu de uma discussão provocada pelos professores da Oficina de Integração IV, unidade curricular do penúltimo semestre das criadoras, que estudam no IFSC com o ensino médio integrado. </p>
+          <h2 class="animate__animated animate__fadeInDown"> <span>8M</span></h2>
+          <p class="animate__animated animate__fadeInUp">Por muitos anos, o 8 de março se estabeleceu para a maioria da população como uma data comercial, de entrega de flores, elogios e presentes para as mulheres. Mas essa situação tem mudado. Especialmente desde a eclosão da Primavera Feminista, o real significado do 8M tem sido resgatado no Brasil e no mundo: um Dia Internacional de Luta das Mulheres. </p>
           <a href="#desce" class="btn-get-started animate__animated animate__fadeInUp">Vem Conhecer!</a>
         </div>
       </div>
@@ -78,7 +78,8 @@
       <div class="carousel-item">
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Objetivo</h2>
-          <p class="animate__animated animate__fadeInUp">O projeto tem como objetivo Informar mulheres vítimas de violência e que se encontram em situação de vulnerabilidade, com o intuito de direcionar aos órgãos competentes.
+          <p class="animate__animated animate__fadeInUp">Nesse sentido ,o 8M é um coletivo de mulheres do Oeste de Santa Catarina, que surgiu em Chapecó em janeiro de 2020.O objetivo da rede é programar eventos culturais  e pautas de reivindicação  para as mulheres .
+            Um dos pilares do coletivo 8M é o respeito.Nossa luta é para que as mulheres sejam respeitadas.Prezamos pela liberdade da mulher
           </p>
         </div>
       </div>

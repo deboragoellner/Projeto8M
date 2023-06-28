@@ -50,14 +50,14 @@
                 <td>{{ $item->informacoes }}</td>
                 <td><img src="/storage/{{ $nome_imagem }}" width="100px" class="img-thumbnail" /> </td>
                 <td><a href="{{ action('App\Http\Controllers\NoticiaController@edit', $item->id) }}"><i
-                            class='fa-solid fa-pen-to-square' style='color:orange;'></i></a></td>
+                            class='fa-solid fa-pen-to-square' style='color:orange;'></i>Editar</a></td>
                 <td>
                     <form method="POST"
                         action="{{ action('App\Http\Controllers\NoticiaController@destroy', $item->id) }}">
                         <input type="hidden" name="_method" value="DELETE">
                         @csrf
                         <button type="submit" onclick='return confirm("Deseja Excluir?")' style='all: unset;'><i
-                                class='fa-solid fa-trash' style='color:red;'></i>
+                                class='fa-solid fa-trash' style='color:red;'>Deletar</i>
                         </button>
                     </form>
                 </td>
