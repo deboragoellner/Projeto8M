@@ -1,4 +1,4 @@
-@extends('base.app')
+ @extends('base.app')
 
 @section('conteudo')
 @section('tituloPagina', 'Listagem de Notícias')

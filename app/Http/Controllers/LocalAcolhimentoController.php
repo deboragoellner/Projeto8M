@@ -98,14 +98,16 @@ class LocalAcolhimentoController extends Controller
 
         $localacolhimento->delete();
 
-        return \redirect('localacolhimento')->with('success', 'Removido com sucesso!');
+        return \redirect('locaisacolhimento')->with('success', 'Removido com sucesso!');
     }
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
-       $locaisacolhimento = LocalAcolhimento::where(
-                'nome',
+        $campo = $request->campo;
+
+        if ($campo) {
+            $locaisacolhimento = LocalAcolhimento::where(
+                $campo,
                 'like',
                 '%' . $request->valor . '%'
             )->get();

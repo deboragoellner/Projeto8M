@@ -92,7 +92,7 @@ class UsuarioController extends Controller
             Usuario::rules(),
             Usuario::messages()
         );
-        
+
         //adiciono os dados do formulário ao vetor
         $dados =  [
             'nome' => $request->nome,
@@ -127,7 +127,7 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
 
         //verifica se existe o arquivo vinculado ao registro e depois remove
-        if (Storage::disk('public')->exists($usuario->imagem)) {
+        if (!empty($usuario->imagem) && Storage::disk('public')->exists($usuario->imagem)) {
             Storage::disk('public')->delete($usuario->imagem);
         }
         $usuario->delete();
@@ -137,9 +137,11 @@ class UsuarioController extends Controller
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
+        $campo = $request->campo;
+
+        if ($campo) {
             $usuarios = Usuario::where(
-                'nome',
+                $campo,
                 'like',
                 '%' . $request->valor . '%'
             )->get();

@@ -30,7 +30,6 @@
     <!-- Styles -->
     <link href="{{-- asset('css/app.css') --}}" rel="stylesheet">
 </head>
-
 <body class="d-flex flex-column min-vh-100">
     @include('base.menu')
 
@@ -41,7 +40,7 @@
     </div>
 
     <!-- ======= Footer ======= -->
-<footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+<footer id="footer"  class="footer mt-auto py-3"data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
     <div class="footer-top">
       <div class="container">

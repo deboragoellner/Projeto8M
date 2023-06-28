@@ -58,7 +58,7 @@ class NoticiaController extends Controller
     function edit($id)
     {
         //select * from Noticia where id = $id;
-        $Noticia = Noticia::findOrFail($id);
+        $noticia = Noticia::findOrFail($id);
         //dd($noticia);
 
         return view('NoticiaForm')->with([
@@ -119,14 +119,17 @@ class NoticiaController extends Controller
 
         $noticia->delete();
 
-        return \redirect('Noticia')->with('success', 'Removido com sucesso!');
+        return \redirect('noticias')->with('success', 'Removido com sucesso!');
     }
 
     function search(Request $request)
     {
-        if ($request->campo == 'nome') {
+
+        $campo = $request->campo;
+
+        if ($campo) {
             $noticias = Noticia::where(
-                'nome',
+                $campo,
                 'like',
                 '%' . $request->valor . '%'
             )->get();

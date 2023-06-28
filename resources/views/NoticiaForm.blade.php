@@ -20,21 +20,21 @@
             @endif
 
             <input type="hidden" name="id"
-                value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($noticias->id)) {{ $noticias->id }} @else {{ '' }} @endif" /><br>
+                value="@if (!empty(old('id'))) {{ old('id') }} @elseif(!empty($noticia->id)) {{ $noticia->id }} @else {{ '' }} @endif" /><br>
             <div class="col-3">
                 <label class="form-label">Titulo</label><br>
                 <input type="text" class="form-control" name="titulo"
-                    value="@if (!empty(old('titulo'))) {{ old('titulo') }} @elseif(!empty($noticias->titulo)) {{ $noticias->titulo }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('titulo'))) {{ old('titulo') }} @elseif(!empty($noticia->titulo)) {{ $noticia->titulo }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Conteudo</label><br>
                 <input type="text" class="form-control" name="conteudo"
-                    value="@if (!empty(old('conteudo'))) {{ old('conteudo') }} @elseif(!empty($noticias->conteudo)) {{ $noticias->conteudo }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('conteudo'))) {{ old('conteudo') }} @elseif(!empty($noticia->conteudo)) {{ $noticia->conteudo }} @else {{ '' }} @endif" /><br>
             </div>
             <div class="col-3">
                 <label class="form-label">Informações</label><br>
                 <input type="text" class="form-control" name="informacoes"
-                    value="@if (!empty(old('informacoes'))) {{ old('informacoes') }} @elseif(!empty($noticias->informacoes)) {{ $noticias->informacoes }} @else {{ '' }} @endif" /><br>
+                    value="@if (!empty(old('informacoes'))) {{ old('informacoes') }} @elseif(!empty($noticia->informacoes)) {{ $noticia->informacoes }} @else {{ '' }} @endif" /><br>
             </div>
             @php
                 $nome_imagem = !empty($noticias->imagem) ? $noticias->imagem : 'sem_imagem.png';
